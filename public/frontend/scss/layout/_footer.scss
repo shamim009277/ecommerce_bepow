@@ -1,0 +1,61 @@
+/*
+
+===============================
+Footer Area
+===============================
+
+*/
+.footer-area {
+    position: relative;
+    &::after {
+        position: absolute;
+        right: 25px;
+        top: 0px;
+        height: 350px;
+        width: 350px;
+        content: "";
+        background: url(../images/footer-watermark.png);
+        opacity: 0.15;
+    }
+    .footer-logo {
+        a {
+            width: 100px;
+            display: block;
+        }
+    }
+    .footer-nav {
+        ul {
+            margin-top: 20px;
+            li {
+                margin: 0 10px;
+                display: inline-block;
+                a {
+                    font-weight: 700;
+                    font-size: 14px;
+                    &:hover {
+                        color: $cl-primary;
+                        border-bottom: 1px solid $cl-primary;
+                    }
+                }
+            }
+        }
+    }
+
+    .copyright {
+        border-top: 1px solid rgba($cl-primary, $alpha: 0.15);
+        padding-top: 40px;
+        margin-top: 40px;
+        .copyright-text {
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+        .copyright-icon {
+            float: right;
+            img {
+                height: 35px;
+                filter: grayscale(1);
+            }
+        }
+    }
+}
+

@@ -1,0 +1,241 @@
+/* ---------------------------------------
+
+[Main Stylesheet]
+
+Project:    	  Bipow - One product store
+Version:    	  1.0
+Primary Use:      Single Product eCommerce Store
+
+------------------------------------------
+
+[Table of contents]
+
+1. Fonts
+2. Reset Css
+3. Global Settings
+4. Section Styles
+5. Colors
+6. Margin and Padding
+7. Background Overlay
+8. Buttons Style
+9. Preloader
+10. ScrollUp Button
+11. Main Header style
+12. Hero Area
+13. Features Area
+14. Custom Hero
+15. Promo Area
+16. Our Partners
+17. Pricing Table
+18. Why Choose us
+19. Parallax Area
+20. Testimonial Area
+21. Counter Area
+22. App Area
+23. Blog Area
+24. Footer Area
+25. Custom Banner
+26. About Area
+
+-------------------------------------------*/
+
+/*** 
+
+================
+	Fonts
+================
+
+
+font-family: 'louis_george_caferegular', sans-serif;
+font-family: 'louis_george_cafebold', sans-serif;
+font-family: 'Didact Gothic', sans-serif;
+font-family: 'Poppins', sans-serif;
+
+ ***/
+
+ @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700|Didact+Gothic&display=swap");
+
+
+
+
+ @font-face {
+    font-family: 'louis_george_caferegular';
+    src: url('../fonts/louis_george_cafe-webfont.woff2') format('woff2'),
+         url('../fonts/louis_george_cafe-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'louis_george_cafebold';
+    src: url('../fonts/louis_george_cafe_bold-webfont.woff2') format('woff2'),
+         url('../fonts/louis_george_cafe_bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/*** 
+
+===============
+	Reset Css
+===============
+
+ ***/
+ 
+ * {
+	margin:0px;
+	padding:0px;
+	border:none;
+	outline:none;
+}
+
+
+
+
+/*** 
+
+===================
+	Global Settings
+===================
+
+ ***/
+ body {
+	font-size:16px;
+	color: $cl-black;
+	line-height:1.7em;
+	font-weight:400;
+	background: $cl-white;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	font-family: $main-font;
+}
+
+a{
+	text-decoration:none;
+	cursor: pointer;
+	transition: .3s;
+	color:$cl-black;
+}
+
+button,
+a:hover,a:focus,a:visited{
+	text-decoration:none;
+	outline:none !important;	
+	transition: .3s;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	position:relative;
+	font-weight: 700;
+	margin:0px;
+	background:none;
+	line-height:1.2em;
+	font-family: $headding-font;
+}
+
+h1{
+  font-size: 52px;
+}
+
+h2{
+  font-size:42px;
+}
+
+h3{
+  font-size:30px;
+}
+
+h4{
+  font-size:24px;
+}
+
+h5{
+  font-size:20px;
+}
+
+h6{
+  font-size:18px;
+}
+
+input,button,select,textarea{
+  outline: none;
+}
+
+textarea{
+  overflow:hidden;
+}
+
+p{
+  position:relative;
+  font-family: $main-font;
+}
+
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+
+  display:inline-block;
+  max-width:100%;
+}
+
+ul,li{
+	list-style:none;
+	padding:0px;
+	margin:0px;	
+}
+
+img{
+	display:inline-block;
+	max-width:100%;
+}
+
+
+::selection {
+	background-color: #0E8A701a;
+	color: $cl-primary;
+}
+
+-moz-::selection {
+	background-color: #0E8A701a;
+	color: $cl-primary;
+}
+
+-webkit-::selection {
+	background-color: #0E8A701a;
+	color: $cl-primary;
+}
+
+-o-::selection {
+	background-color: #0E8A701a;
+	color: $cl-primary;
+}
+
+
+.page-wrapper {
+  position:relative;
+  margin:0 auto;
+  width:100%;
+  min-width:300px;
+  overflow: hidden;
+}
+
+.btn.focus, .btn:focus {
+	box-shadow: none;
+}
+
+.border-0 {
+	border: 0px;
+}
+
+.radius-50 {
+	border-radius: 50px !important;
+}
+
+.centered{
+	text-align:center;
+}
