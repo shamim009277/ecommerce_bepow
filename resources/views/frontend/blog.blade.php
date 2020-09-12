@@ -19,105 +19,42 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-6">
+                    
+                @foreach($blogs as $blog) 
+                   @if(!empty($blog))
                     <div class="single-blog-block">
-                        <a href="">
+                        <a href="{{url('blogs/details/'.$blog->id)}}">
                             <div class="thumb">
-                                <img src="frontend/images/blog/1.jpg" alt="">
+                                <img src="{{ asset('frontend/images/blog/'.$blog->image) }}">
                             </div>
                             <div class="title">
-                                <h2>Top healthy for riding everyone</h2>
+                                <h2>{{$blog->title}}</h2>
                             </div>
                             <div class="meta">
                                 <div class="date">
-                                    12th may, 2020
+                                    {{ \Carbon\Carbon::parse($blog->created_at)->format('j F, Y ||') }}
                                 </div>
                                 <div class="author">
-                                    Robart husson
+                                    Admin
                                 </div>
                             </div>
                             <div class="content">
-                                <p>Nisi magnam iure, quis iusto ad expedita nulla? Rem minima exercitationem nesciunt ipsa, nemo doloribus voluptates dolore.</p>
+                                <p><?php echo substr($blog->content,0,200); ?>.....</p>
                             </div>
                             <div class="read-more">
                                 <button class="bttn-small btn-fill-2">Continue Reading</button>
                             </div>
                         </a>
                     </div>
-                    <div class="single-blog-block">
-                        <a href="">
-                            <div class="thumb">
-                                <img src="assets/images/blog/2.jpg" alt="">
-                            </div>
-                            <div class="title">
-                                <h2>Top healthy for riding everyone</h2>
-                            </div>
-                            <div class="meta">
-                                <div class="date">
-                                    12th may, 2020
-                                </div>
-                                <div class="author">
-                                    Robart husson
-                                </div>
-                            </div>
-                            <div class="content">
-                                <p>Nisi magnam iure, quis iusto ad expedita nulla? Rem minima exercitationem nesciunt ipsa, nemo doloribus voluptates dolore.</p>
-                            </div>
-                            <div class="read-more">
-                                <button class="bttn-small btn-fill-2">Continue Reading</button>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="single-blog-block">
-                        <a href="">
-                            <div class="thumb">
-                                <img src="assets/images/blog/1.jpg" alt="">
-                            </div>
-                            <div class="title">
-                                <h2>Top healthy for riding everyone</h2>
-                            </div>
-                            <div class="meta">
-                                <div class="date">
-                                    12th may, 2020
-                                </div>
-                                <div class="author">
-                                    Robart husson
-                                </div>
-                            </div>
-                            <div class="content">
-                                <p>Nisi magnam iure, quis iusto ad expedita nulla? Rem minima exercitationem nesciunt ipsa, nemo doloribus voluptates dolore.</p>
-                            </div>
-                            <div class="read-more">
-                                <button class="bttn-small btn-fill-2">Continue Reading</button>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="single-blog-block">
-                        <a href="">
-                            <div class="thumb">
-                                <img src="assets/images/blog/2.jpg" alt="">
-                            </div>
-                            <div class="title">
-                                <h2>Top healthy for riding everyone</h2>
-                            </div>
-                            <div class="meta">
-                                <div class="date">
-                                    12th may, 2020
-                                </div>
-                                <div class="author">
-                                    Robart husson
-                                </div>
-                            </div>
-                            <div class="content">
-                                <p>Nisi magnam iure, quis iusto ad expedita nulla? Rem minima exercitationem nesciunt ipsa, nemo doloribus voluptates dolore.</p>
-                            </div>
-                            <div class="read-more">
-                                <button class="bttn-small btn-fill-2">Continue Reading</button>
-                            </div>
-                        </a>
-                    </div>
+                    @else
+                    @endif      
+                @endforeach 
+                                
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
+                            {!! $blogs->appends(Request::all())->links() !!}
+
+                            <!-- <li class="page-item disabled">
                                 <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
                             </li>
                             <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -125,7 +62,7 @@
                             <li class="page-item"><a class="page-link" href="#">3</a></li>
                             <li class="page-item">
                                 <a class="page-link" href="#">Next</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </nav>
                 </div>

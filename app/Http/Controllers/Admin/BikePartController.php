@@ -25,7 +25,7 @@ class BikePartController extends Controller
      */
     public function index()
     {
-        $parts = BikePart::where('status',1)->paginate(5);
+        $parts = BikePart::paginate(5);
         return view('admin.bike_parts.List',compact('parts'));
     }
 

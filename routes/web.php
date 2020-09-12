@@ -13,13 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('frontend.product_details');
+/*Route::get('/app', function () {
+    return view('layouts.app');
 });*/
 
 Route::get('/','FrontendController@show_home');
-Route::get('/about','FrontendController@show_about');
-Route::get('/blog','FrontendController@show_blog');
+Route::get('/about','FrontendController@show_about')->name('about');
+Route::get('/blog','FrontendController@show_blog')->name('blog');
+Route::get('/contact','FrontendController@show_contact')->name('contact');
+Route::post('/message/store','FrontendController@messageStore')->name('message.store');
+Route::get('blogs/details/{id}','FrontendController@blog_details');
 Route::get('/product','FrontendController@show_product_details');
 Route::post('/add_to_cart','CartController@index');
 Route::get('/show_cart','CartController@show');
@@ -45,9 +48,8 @@ Route::get('/cancelPaypal','PaypalPaymentController@cancelPaypal')->name('cancel
 Route::get('/stripe_checkout','StripePaymentController@index');
 Route::post('/stripe_payment','StripePaymentController@store')->name('stripe.checkout');
 
-
 Auth::routes();
-/*Auth::routes(['register' => false]);*/
+
 
 /*Route::get('/home', 'HomeController@index');*/
 Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>['auth:admin']],function(){
@@ -61,6 +63,7 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>['auth:admin'
 	Route::resource('blogs', 'BlogController');
   Route::resource('about', 'AboutController');
   Route::resource('testimonal', 'TestimonialController');
+  Route::get('/manage/contact','ManageController@manageContact');
   Route::get('/manage_orders','ManageController@manageOrders');
   Route::get('/manage_shipping','ManageController@manageShipping');
   Route::get('/manage_payments','ManageController@managePayments');
@@ -76,25 +79,41 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>['auth:admin'
   Route::get('order/status_change/{id}','StatusController@showStatusForm');
   Route::post('order/status/change','StatusController@changeOrderStatus');
 
+  Route::get('parts/change_unactive/{id}','StatusController@unactiveParts');
+  Route::get('parts/change_active/{id}','StatusController@activeParts');
+
+  Route::get('blogs/change_unactive/{id}','StatusController@unactiveBlogs');
+  Route::get('blogs/change_active/{id}','StatusController@activeBlogs');
+
+  Route::get('testimonal/change_unactive/{id}','StatusController@unactiveTestimonial');
+  Route::get('testimonal/change_active/{id}','StatusController@activeTestimonial');
+
+  Route::get('contact/change_unactive/{id}','StatusController@activeContact');
+  Route::get('contact/destroy/{id}','StatusController@destroy');
+
+
 });
-Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
-Route::group(['prefix'=>'admin'],/*'middleware'=>['auth']],*/function(){
+
+Route::post('/user/logout','Auth\LoginController@userLogout')->name('user.logout');
+Route::prefix('admin')->group(function (){
 	// Dashboard route
-   Route::get('/dashboard', 'AdminController@index')->name('admin.dashboard');
+   Route::get('/dashboard','AdminController@index')->name('admin.dashboard');
     // Login routes
-   Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
-   Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-
+   Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
+   Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
     // Logout route
-   Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+   Route::post('/logout','Auth\AdminLoginController@logout')->name('admin.logout');
     // Register routes
-   Route::get('/register', 'Auth\AdminRegisterController@showRegistrationForm')->name('admin.register');
-   Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
+   Route::get('/register','Auth\AdminRegisterController@showRegistrationForm')->name('admin.register');
+   Route::post('/register','Auth\AdminRegisterController@register')->name('admin.register.submit');
     // Password reset routes
-   Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
-   Route::post('/password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
-   Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
-   Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset')->name('admin.password.update');
-
+   Route::get('/password/reset','Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+   Route::post('/password/email','Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+   Route::get('/password/reset/{token}','Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
+   Route::post('/password/reset','Auth\AdminResetPasswordController@reset')->name('admin.password.update');
+  Route::get("/{path}", "Admin\StatusController@serve")->where('path', '.+');
 });
+
+/*Route::get("{path}", "CheckController@serve")->where('path', '.+');*/
+
 

@@ -42,7 +42,7 @@
                                    <td>{{$payment->payment_type}}</td>
                                    <td>{{$payment->payment_method}}</td>
                                    <td>{{$payment->currency}}</td>
-                                   <td>{{$payment->amount}}</td>
+                                   <td>${{$payment->amount}}</td>
                                    <td>{{$payment->payment_status}}</td>
                                    <td>{{$payment->receipt_email}}</td>
                                    <td>

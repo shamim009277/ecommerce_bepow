@@ -18,6 +18,7 @@
     </section><!--/Banner Area-->
 
     <!--Feature Area-->
+@if(!empty($parts))
     <section class="feature-area section-padding-2 gray-bg">
         <div class="container">
             <div class="row justify-content-center">
@@ -40,9 +41,13 @@
             @endforeach       
             </div>
         </div>
-    </section><!--/Feature Area-->
+    </section>
+@else
+@endif
+    <!--/Feature Area-->
 
     <!--Topic Area-->
+@if(!empty($tittles))    
     <section class="section-padding primary-bg">
         <div class="container">
             <div class="row">
@@ -66,9 +71,11 @@
             </div>
         </div>
     </section><!--/Topic Area-->
-    
+@else
+@endif    
    
     <!--Product Section-->
+@if(!empty($product_images))
     <section class="section-padding">
         <div class="container">
             <div class="row">
@@ -146,7 +153,10 @@
                 </div>
             </div>
         </div>
-    </section><!--/Product Section-->
+    </section>
+@else
+@endif
+    <!--/Product Section-->
 
     <!--User Review Section-->
     <section class="section-padding-2 gray-bg">
@@ -159,49 +169,26 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
+@if(!empty($testimonials))
+        @foreach($testimonials as $testimonial)
                 <div class="col-xl-4 col-sm-6">
                     <div class="single-user-review">
                         <div class="quote-icon">
                             <img src="frontend/images/quote.png" alt="">
                         </div>
                         <div class="review">
-                            <p>Got an amazing bike for my next high ride. Really reasonable price and hight quality performance. Highly Recomended!!</p>
+                            <p>{!!$testimonial->review!!}</p>
                         </div>
                         <div class="reviewer-thumb">
-                            <img src="frontend/images/reviewer/1.jpg" alt="">
-                            <p>Astron haat</p>
+                            <img src="{{ asset('frontend/images/reviewer/' . $testimonial->image) }}" alt="">
+                            <p>{{$testimonial->author}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-sm-6">
-                    <div class="single-user-review">
-                        <div class="quote-icon">
-                            <img src="frontend/images/quote.png" alt="">
-                        </div>
-                        <div class="review">
-                            <p>Got an amazing bike for my next high ride. Really reasonable price and hight quality performance. Highly Recomended!!</p>
-                        </div>
-                        <div class="reviewer-thumb">
-                            <img src="frontend/images/reviewer/2.jpg" alt="">
-                            <p>Astron haat</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6">
-                    <div class="single-user-review">
-                        <div class="quote-icon">
-                            <img src="frontend/images/quote.png" alt="">
-                        </div>
-                        <div class="review">
-                            <p>Got an amazing bike for my next high ride. Really reasonable price and hight quality performance. Highly Recomended!!</p>
-                        </div>
-                        <div class="reviewer-thumb">
-                            <img src="frontend/images/reviewer/3.jpg" alt="">
-                            <p>Astron haat</p>
-                        </div>
-                    </div>
-                </div>
+        @endforeach
+@else
+@endif   
             </div>
         </div>
     </section><!--/User Review Section-->
@@ -220,14 +207,15 @@
                 @foreach($posts as $post)
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
                     <div class="single-insta">
-                        <a href="">
-                            <img src="{{$post['media_url']}}" alt="">
+                        <a href="{{$post['permalink']}}" target="_blank">
+                            <img src="{{$post['media_url']}}" alt="" >
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
 
                 @endforeach
+                @else
                 @endif
                       
             </div>

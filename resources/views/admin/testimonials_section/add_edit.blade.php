@@ -33,6 +33,12 @@
                             
                             
                             <div class="form-group row">
+                              <label for="Content Title" class="col-sm-3 control-label">Author</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="author" name="author" placeholder="Enter Author Name" value="{{  isset($single_testimonial->author)?$single_testimonial->author:old('author')}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
                               <label for="Review" class="col-sm-3 control-label">Review</label>
                               <div class="col-sm-9">
                                  <textarea class="textarea" class="summernote" name="review" placeholder="Place some text here"

@@ -1,5 +1,17 @@
 @extends('frontend.layouts.frontmaster')
 @section('title','Bipow - One Product Store')
+@push('css')
+<style type="text/css" media="screen">
+    #total,#subtotal{
+        font-size: 18px;
+        font-weight: 600;
+        font-family: "Didact Gothic";
+        text-align: right;
+        color:#07485e;
+    }
+    
+</style>
+@endpush
 @section('content')
 <!--Custom Banner-->
     <section class="section-padding dark-overlay" style="background: url(frontend/images/banner-2.jpg) no-repeat center center;">
@@ -108,7 +120,6 @@
                             <div class="card-body">
                                 <div class="single-cart-total">
                                     <p>Subtotal</p>
-                                    <p class="cart-amount">${{Cart::getSubTotal()}}</p>
                                     <input type="text" name="subtotal" id="subtotal" value="${{Cart::getSubTotal()}}">
                                 </div>
                                 <div class="single-cart-total">
@@ -121,7 +132,6 @@
                                 </div>
                                 <div class="single-cart-total">
                                     <p>Total</p>
-                                    <p class="cart-amount">${{Cart::getTotal()}}</p>
                                     <input type="text" name="total" id="total" value="${{Cart::getTotal()}}">
                                 </div>
                                 <!-- <a href="{{url('/checkout')}}" class="bttn-small btn-fill">Procceed to Checkout</a>  -->

@@ -51,9 +51,9 @@
                                    </td>
                                    <td>
                                   @if($part->status==1)
-                                  <a class="btn btn-warning btn-sm" href="" title="Change Status"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+                                  <a class="btn btn-warning btn-sm" href="{{url('admin/parts/change_unactive/'.$part->id)}}" title="Change Status"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
                                  @else
-                                  <a class="btn btn-info btn-sm" href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                                  <a class="btn btn-info btn-sm" href="{{url('admin/parts/change_active/'.$part->id)}}"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
                                  @endif
                                   <a class="btn btn-success btn-sm" href="{{route('parts.edit',$part->id)}}"><i class="fas fa-edit" aria-hidden="true"></i></a>
                                   <form id="delete-form-{{$part->id}}" action="{{route('parts.destroy',$part->id)}}" method="POST" style="display:none">

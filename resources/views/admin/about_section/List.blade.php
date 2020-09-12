@@ -28,12 +28,38 @@
                                 <th>Content</th>
                                 <th>Mission</th>
                                 <th>Vission</th>
-                                <th>status</th>
                                 <th>action</th>
                               </tr>
                               </thead>
                               <tbody>
-                              
+                                <?php $n=0; ?>
+                              @foreach($abouts as $about)
+                                 <tr>
+                                    <td><?php echo ++$n; ?></td>
+                                    <td>{!! $about->content !!}</td>
+                                    <td>{!! $about->mission !!}</td>
+                                    <td>{!! $about->vission !!}</td>
+                                    <td>
+                                       <a class="btn btn-success btn-sm" href="{{route('about.edit',$about->id)}}"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                      <form id="delete-form-{{$about->id}}" action="{{route('about.destroy',$about->id)}}" method="POST"     style="display:none">
+                                      @csrf
+                                      @method('DELETE')
+                                      
+                                      </form>
+
+                                     <button class="btn btn-danger btn-sm"
+                                    onclick="if(confirm('Are You Sure You Want to Delete This')){
+                                        event.preventDefault();
+                                         document.getElementById('delete-form-{{$about->id}}').submit();
+                                    }else{
+                                           event.preventDefault();
+                                    }
+                                    ">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                  </td>
+                                 </tr>
+                              @endforeach
                               </tbody>
                             </table>
                        </div> 

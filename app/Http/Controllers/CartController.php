@@ -8,7 +8,7 @@ use App\ProductImage;
 use App\PromoCode;
 use Session;
 use Cart;
-session_start();
+
 class CartController extends Controller
 {
     public function index(Request $request){

@@ -13,7 +13,7 @@ use Cart;
 use Session;
 use DB;
 
-session_start();
+
 class CheckController extends Controller
 {
     
@@ -121,6 +121,7 @@ class CheckController extends Controller
 
            $data['user_id'] = Auth::user('web')->id;
            $data['shipping_id'] = $shipping->id;
+           $data['pay_id'] = "Hand Cash";
            $data['transaction_id'] = "Hand Cash";
            $data['payment_method'] = "Hand Cash";
            $data['payment_type']   = "Cash-on-delivary";
@@ -209,6 +210,11 @@ class CheckController extends Controller
                  ->orderBy('id','DESC')
                  ->first();
        return view ('frontend.user_panel',compact('order','details'));
+    }
+
+    public function serve(){
+
+       echo "404";
     }
 
 }

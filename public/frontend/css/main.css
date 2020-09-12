@@ -2398,6 +2398,203 @@ Blog
     display: inline-block;
 }
 
+.blog-details {
+    color: #07485e;
+}
+
+.blog-details img {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.blog-details .blog-meta {
+    margin-bottom: 10px;
+}
+
+.blog-details .blog-meta span a {
+    margin-right: 10px;
+    font-size: 14px;
+    display: inline-block;
+    color: #ffffff;
+}
+
+.blog-details .blog-meta span a:hover {
+    color: #24D8CB;
+}
+
+.blog-details .blog-meta span a i {
+    color: #24D8CB;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.blog-details h2 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.blog-details .blockquote {
+    font-size: 18px;
+    font-style: italic;
+    padding-left: 15px;
+    margin: 20px 0;
+    padding: 20px;
+    background: #07485e;
+}
+
+.blog-all-comments {
+    color: rgba(36, 216, 203, 0.5);
+}
+
+.blog-all-comments h3 {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.blog-all-comments .blog-comments {
+    margin-bottom: 40px;
+    padding: 30px 40px;
+    overflow: hidden;
+    background: rgba(36, 216, 203, 0.05);
+    border-radius: 6px;
+}
+
+.blog-all-comments .blog-comments div {
+    overflow: hidden;
+}
+
+.blog-all-comments .blog-comments .author-thumb {
+    width: 20%;
+    float: left;
+}
+
+.blog-all-comments .blog-comments .author-thumb img {
+    border-radius: 6px;
+    width: 70px;
+}
+
+.blog-all-comments .blog-comments .author-comments .author-details h4 {
+    float: left;
+    font-size: 18px;
+}
+
+.blog-all-comments .blog-comments .author-comments .author-details .comment-reply-btn {
+    float: right;
+}
+
+.blog-all-comments .blog-comments .author-comments .author-designation {
+    font-weight: 300;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-style: italic;
+}
+
+.blog-comment-form {
+    margin-bottom: 30px;
+    color: rgba(36, 216, 203, 0.5);
+}
+
+.blog-comment-form h3 {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.blog-comment-form input, .blog-comment-form textarea {
+    width: 100%;
+    border: 2px solid rgba(36, 216, 203, 0.08);
+    text-indent: 20px;
+    margin-bottom: 30px;
+    transition: .3s;
+    background: transparent;
+    color: #24D8CB;
+    border-radius: 4px;
+}
+
+.blog-comment-form input::placeholder, .blog-comment-form textarea::placeholder {
+    color: rgba(36, 216, 203, 0.5);
+}
+
+.blog-comment-form input:focus, .blog-comment-form textarea:focus {
+    border-color: rgba(36, 216, 203, 0.5);
+}
+
+.blog-comment-form input {
+    height: 50px;
+}
+
+.blog-comment-form textarea {
+    padding-top: 15px;
+}
+
+.blog-comments + .blog-comments {
+    margin-left: 15%;
+}
+
+@media (max-width: 767px) {
+    .blog-comment-form {
+        margin-bottom: 40px;
+    }
+}
+
+.post-share-and-tag {
+    margin: 40px 0 60px 0;
+}
+
+.post-share-and-tag .social {
+    color: #07485e;
+}
+
+@media (max-width: 767px) {
+    .post-share-and-tag .social {
+        float: none;
+        text-align: left;
+        margin-top: 20px;
+    }
+}
+
+.post-share-and-tag .social span {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.post-share-and-tag .social a {
+    font-size: 18px;
+    text-align: center;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.post-share-and-tag .social a:hover {
+    color: #24D8CB;
+}
+
+.post-share-and-tag .tags {
+    color: #24D8CB;
+}
+
+.post-share-and-tag .tags a {
+    color: #07485e;
+    text-transform: capitalize;
+}
+
+.post-share-and-tag .tags a:hover {
+    color: #24D8CB;
+}
+
+.blog-details .big-thumb {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.blog-details .blockquote {
+    border-radius: 8px;
+    background: rgba(36, 216, 203, 0.1);
+    padding: 30px;
+    border-bottom: 2px solid rgba(36, 216, 203, 0.5);
+}
+
 /*
 
 ===============================
@@ -2597,4 +2794,197 @@ account-form
 
 .account-form form p a:hover {
     color: #24D8CB;
+}
+
+/*
+
+===============================
+deposit Area
+===============================
+
+*/
+.deposit-content .single-deposit-box a {
+    display: block;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 30px;
+    background: rgba(36, 216, 203, 0.05);
+    border-radius: 6px;
+    color: rgba(36, 216, 203, 0.5);
+    border: 2px solid rgba(36, 216, 203, 0.07);
+}
+
+.deposit-content .single-deposit-box a:hover {
+    border: 2px solid rgba(36, 216, 203, 0.5);
+    background: rgba(36, 216, 203, 0.2);
+}
+
+.deposit-content .single-deposit-box a span {
+    font-size: 20px;
+    font-weight: 700;
+    color: #07485e;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.deposit-content .single-deposit-box a img {
+    height: 40px;
+}
+
+.deposit-content .single-deposit-box form input {
+    width: 100%;
+    height: 50px;
+    padding: 0 15px;
+    margin-bottom: 15px;
+    border: 2px solid rgba(36, 216, 203, 0.5);
+    border-radius: 4px;
+}
+
+.deposit-content .nav-item {
+    margin: 0 12px 6px 0;
+}
+
+.deposit-content .nav-item .bttn-mid.btn-fill {
+    transform: skew(0deg);
+    border-radius: 4px;
+    background: rgba(36, 216, 203, 0.2);
+    color: #24D8CB;
+    letter-spacing: 1px;
+}
+
+.deposit-content .nav-item .bttn-mid.btn-fill.active {
+    background: #24D8CB;
+    color: #ffffff;
+}
+
+/*
+
+===============================
+Sidebar
+===============================
+
+*/
+.site-sidebar .single-sidebar {
+    margin-bottom: 40px;
+    padding: 30px;
+    color: #07485e;
+    border: 2px solid rgba(36, 216, 203, 0.1);
+}
+
+.site-sidebar .single-sidebar div {
+    overflow: hidden;
+}
+
+.site-sidebar .single-sidebar:last-child {
+    margin-bottom: 0;
+}
+
+.site-sidebar .single-sidebar h3 {
+    font-size: 24px;
+    font-weight: 600;
+    position: relative;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.site-sidebar .single-sidebar form {
+    width: 100%;
+    position: relative;
+    height: 50px;
+    border-radius: 4px;
+    border-radius: 50px;
+}
+
+.site-sidebar .single-sidebar form input {
+    width: 100%;
+    height: 100%;
+    transition: 0.4s;
+    padding: 0 15px;
+    border: 2px solid rgba(36, 216, 203, 0.05);
+    background: rgba(36, 216, 203, 0.05);
+    border-radius: 50px;
+    color: #07485e;
+}
+
+.site-sidebar .single-sidebar form input:focus {
+    border-color: rgba(36, 216, 203, 0.05);
+}
+
+.site-sidebar .single-sidebar form input::placeholder {
+    color: rgba(7, 72, 94, 0.5);
+}
+
+.site-sidebar .single-sidebar form button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    color: rgba(36, 216, 203, 0.5);
+    height: 100%;
+    width: 50px;
+    border-radius: 0 50px 50px 0;
+}
+
+.site-sidebar .single-sidebar form button:hover {
+    color: #24D8CB;
+}
+
+.site-sidebar .single-sidebar ul li {
+    margin-bottom: 20px;
+    position: relative;
+    transition: 0.4s;
+}
+
+.site-sidebar .single-sidebar ul li:last-child {
+    margin-bottom: 0;
+}
+
+.site-sidebar .single-sidebar ul li a {
+    color: #07485e;
+    display: inline-block;
+    text-transform: capitalize;
+    background: rgba(36, 216, 203, 0.2);
+    padding: 7px 20px;
+    font-weight: 700;
+    border-radius: 50px;
+}
+
+.site-sidebar .single-sidebar ul li a:hover {
+    color: #24D8CB;
+}
+
+.site-sidebar .single-sidebar .social-follow a {
+    border-radius: 4px;
+    color: #ffffff;
+    text-align: center;
+    display: inline-block;
+    margin: 5px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+}
+
+.site-sidebar .single-sidebar .social-follow a:hover {
+    background: #24D8CB;
+}
+
+.site-sidebar .single-sidebar .social-follow a i {
+    font-size: 18px;
+}
+
+@media (max-width: 991px) {
+    .site-sidebar .single-sidebar .social-follow a {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 767px) {
+    .site-sidebar .single-sidebar .social-follow a {
+        width: 100%;
+    }
+}
+
+.site-sidebar .single-sidebar a img {
+    width: 100%;
 }

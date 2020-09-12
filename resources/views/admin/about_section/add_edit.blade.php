@@ -35,7 +35,7 @@
                               <label for="Description" class="col-sm-3 control-label">Content</label>
                               <div class="col-sm-9">
                                  <textarea class="textarea" class="summernote" name="content" placeholder="Place some text here"
-                                >{!!  isset($single_content->short_description)?$single_content->short_description:old('short_description') !!}
+                                >{!!  isset($single_content->content)?$single_content->content:old('content') !!}
                                  </textarea>
                               </div>
                             </div>
@@ -44,7 +44,7 @@
                               <label for="Description" class="col-sm-3 control-label">Vission</label>
                               <div class="col-sm-9">
                                  <textarea class="textarea" class="summernote" name="vission" placeholder="Place some text here"
-                                >{!!  isset($single_content->short_description)?$single_content->short_description:old('short_description') !!}
+                                >{!!  isset($single_content->vission)?$single_content->vission:old('vission') !!}
                                  </textarea>
                               </div>
                             </div>
@@ -53,7 +53,7 @@
                               <label for="Description" class="col-sm-3 control-label">Mission</label>
                               <div class="col-sm-9">
                                  <textarea class="textarea" class="summernote" name="mission" placeholder="Place some text here"
-                                >{!!  isset($single_content->short_description)?$single_content->short_description:old('short_description') !!}
+                                >{!!  isset($single_content->mission)?$single_content->mission:old('mission') !!}
                                  </textarea>
                               </div>
                             </div>

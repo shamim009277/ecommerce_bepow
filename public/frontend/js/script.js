@@ -21,6 +21,10 @@
        $(this).toggleClass("is-active");
    });
 
+// Date Picker
+$( function() {
+  $( "#datepicker" ).datepicker();
+});
 
 
 

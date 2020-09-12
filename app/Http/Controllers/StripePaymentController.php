@@ -42,7 +42,8 @@ class StripePaymentController extends Controller
 
                $data['user_id'] = Auth::user('web')->id;
                $data['shipping_id'] = $shipping->id;
-               $data['transaction_id'] = $charge['id'];
+               $data['pay_id']=$charge['id'];
+               $data['transaction_id'] = $charge['balance_transaction'];
                /*$charge['balance_transaction'];*/
                $data['payment_method'] = $charge['payment_method'];
                $data['payment_type']   = strtoupper($charge['payment_method_details']['card']['brand']).' '.strtoupper($charge['payment_method_details']['type']);

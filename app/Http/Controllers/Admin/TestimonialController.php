@@ -12,6 +12,11 @@ use Validator;
 
 class TestimonialController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +24,8 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        return view('admin.testimonials_section.List');
+        $testimonials = Testimonial::get();
+        return view('admin.testimonials_section.List',compact('testimonials'));
     }
 
     /**
@@ -42,7 +48,8 @@ class TestimonialController extends Controller
     {
         $validator = Validator::make($request->all(),[
             
-                'review'=>'required | max:500',
+                'author'=>'required',
+                'review'=>'required | max:200',
                 'image'=>'mimes:jpeg,jpg,png,gif|required|max:2000'
                 
             ]);
@@ -59,6 +66,7 @@ class TestimonialController extends Controller
 
         $input = $request->all();
         //return $input;
+        $input['author'] = $request->author;
         $input['review'] = $request->review;
         $input['status'] = 1;
 
@@ -127,8 +135,9 @@ class TestimonialController extends Controller
     {
         $validator = Validator::make($request->all(),[
             
-                'review'=>'required | max:500',
-                'image'=>'mimes:jpeg,jpg,png,gif|required|max:2000'
+                'author'=>'required',
+                'review'=>'required | max:200',
+                'image'=>'mimes:jpeg,jpg,png,gif|max:2000'
                 
             ]);
         if($validator->fails())
@@ -145,6 +154,7 @@ class TestimonialController extends Controller
         $testimonial = Testimonial::findOrFail($id);
         $input = $request->all();
         //dd($input);
+        $input['author'] = $request->author;
         $input['review'] = $request->review;
 
         if (($request->file('image')) !== ($testimonial->image)) {

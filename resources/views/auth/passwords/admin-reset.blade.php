@@ -1,6 +1,8 @@
 @extends('layouts.admin-app')
-
+@section('title','Admin | Recover Password')
 @section('content')
+
+<!-- /.login-box -->
     <div class="container" style="margin-top: 79px;">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -8,7 +10,12 @@
                     <div class="card-header bg-primary text-light">{{ __('Admin Reset Password') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admin.password.update') }}">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        <form method="POST" action="{{ route('admin.password.update')}}">
                             @csrf
 
                             <input type="hidden" name="token" value="{{ $token }}">

@@ -926,6 +926,186 @@ Blog
 
 
 
+.blog-details {
+  color: $cl-black;
+  img {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .blog-meta {
+    margin-bottom: 10px;
+    span {
+      a {
+        margin-right: 10px;
+        font-size: 14px;
+        display: inline-block;
+        color: $cl-white;
+        &:hover {
+          color: $cl-primary;
+        }
+        i {
+          color: $cl-primary;
+          font-size: 16px;
+          font-weight: bold;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+  h2 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 30px;
+  }
+  .blockquote {
+    font-size: 18px;
+    font-style: italic;
+    padding-left: 15px;
+    margin: 20px 0;
+    padding: 20px;
+    background: $cl-black;
+  }
+}
+
+.blog-all-comments {
+  color: rgba($cl-primary, $alpha: 0.5); 
+  h3 {
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .blog-comments {
+    margin-bottom: 40px;
+    padding: 30px 40px;
+    overflow: hidden;
+    background: rgba($cl-primary, $alpha: 0.05);
+    border-radius: 6px;
+    div {
+      overflow: hidden;
+    }
+    .author-thumb {
+      width: 20%;
+      float: left;
+      img {
+        border-radius: 6px;
+        width: 70px;
+      }
+    }
+    .author-comments {
+      .author-details {
+        h4 {
+          float: left;
+          font-size: 18px;
+        }
+        .comment-reply-btn {
+          float: right;
+          
+        }
+      }
+      .author-designation {
+        font-weight: 300;
+        font-size: 14px;
+        margin-bottom: 5px;
+        font-style: italic;
+      }
+    }
+  }
+}
+.blog-comment-form {
+  margin-bottom: 30px;
+  color: rgba($cl-primary, $alpha: 0.5);
+  h3 {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+  input, textarea {
+    width: 100%;
+    border: 2px solid rgba($cl-primary, $alpha: 0.08);
+    text-indent: 20px;
+    margin-bottom: 30px;
+    transition: .3s;
+    background: transparent;
+    color: $cl-primary;
+    border-radius: 4px;
+    &::placeholder {
+      color: rgba($cl-primary, $alpha: 0.5);
+    }
+    &:focus {
+      border-color: rgba($cl-primary, $alpha: 0.5);
+    }
+  }
+  input {
+    height: 50px;
+  }
+  textarea {
+    padding-top: 15px;
+  }
+}
+
+.blog-comments + .blog-comments {
+    margin-left: 15%;
+}
+
+
+
+
+@media (max-width: 767px){
+  .blog-comment-form {
+    margin-bottom: 40px;
+  }
+}
+
+
+.post-share-and-tag {
+  margin: 40px 0 60px 0;
+  .social {
+    color: $cl-black;
+    @media(max-width: 767px){
+      float: none;
+      text-align: left;
+      margin-top: 20px;
+    }
+    span {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    a {
+      font-size: 18px;
+      text-align: center;
+      display: inline-block;
+      margin: 0 5px;
+      &:hover {
+        color: $cl-primary;
+      }
+    }
+  }
+  .tags {
+    color: $cl-primary;
+    a {
+      color: $cl-black;
+      text-transform: capitalize;
+      &:hover {
+        color: $cl-primary;
+      }
+    }
+  }
+}
+
+
+
+.blog-details {
+  .big-thumb {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .blockquote {
+    border-radius: 8px;
+    background: rgba($cl-primary, $alpha: 0.1);
+    padding: 30px;
+    border-bottom: 2px solid rgba($cl-primary, $alpha: 0.5)
+  }
+}
+
+
 
 /*
 
@@ -1116,4 +1296,67 @@ account-form
     }
   }
 }
-  
+
+
+
+
+
+/*
+
+===============================
+deposit Area
+===============================
+
+*/
+.deposit-content {
+  .single-deposit-box {
+    a {
+      display: block;
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 30px;
+      background: rgba($cl-primary, $alpha: 0.05);
+      border-radius: 6px;
+      color: rgba($cl-primary, $alpha: 0.5);
+      border: 2px solid rgba($cl-primary, $alpha: 0.07);
+      &:hover {
+        border: 2px solid rgba($cl-primary, $alpha: 0.5);
+        background: rgba($cl-primary, $alpha: 0.2);
+      }
+      span {
+        font-size: 20px;
+        font-weight: 700;
+        color: $cl-black;
+        display: block;
+        margin-bottom: 15px;
+      }
+      img {
+        height: 40px;
+      }
+    }
+    form {
+      input {
+        width: 100%;
+        height: 50px;
+        padding: 0 15px;
+        margin-bottom: 15px;
+        border: 2px solid rgba($cl-primary, $alpha: 0.5);
+        border-radius: 4px;
+      }
+    }
+  }
+  .nav-item {
+    margin: 0 12px 6px 0;
+    .bttn-mid.btn-fill {
+      transform: skew(0deg);
+      border-radius: 4px;
+      background: rgba($cl-primary, $alpha: 0.2);
+      color: $cl-primary;
+      letter-spacing: 1px;
+    }
+    .bttn-mid.btn-fill.active {
+      background: $cl-primary;
+      color: $cl-white;
+    }
+  }
+}

@@ -12,6 +12,10 @@ use Validator;
 
 class BlogController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +23,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::where('status',1)->paginate(10);
+        $blogs = Blog::paginate(10);
         return view('admin.blog_content.List',compact('blogs'));
     }
 
@@ -43,7 +47,7 @@ class BlogController extends Controller
     {
         $validator = Validator::make($request->all(),[
             
-                'title'=>'required',    
+                'title'=>'required | max:300| unique:blogs',    
                 'content'=>'required',    
                 'image'=>'mimes:jpeg,jpg,png,gif|required'
                 

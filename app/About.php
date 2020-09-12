@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class About extends Model
 {
-    protected $table = "";
+    protected $table = "abouts";
     protected $fillable = [
-
+        'content','mission','vission'
     ];
 }

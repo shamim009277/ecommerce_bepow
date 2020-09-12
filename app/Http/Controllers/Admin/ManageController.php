@@ -8,11 +8,17 @@ use Cartalyst\Stripe\Stripe;
 use App\Oreder;
 use App\Refund;
 use App\User;
+use App\Contact;
 use DB;
 use Session;
 
 class ManageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function manageOrders(){
 
     	$orders = DB::table('oreders')
@@ -120,6 +126,11 @@ class ManageController extends Controller
       
        $refunds = Refund::all();
        return view('admin.refund',compact('refunds'));
+    }
+
+    public function manageContact(){
+      $contacts = Contact::all();
+      return view('admin.contact',compact('contacts'));
     }
 
 

@@ -14,11 +14,17 @@ use Session;
 
 class RefundController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function paypalPaymentRefund($id){
 
        $payment = DB::table('payments')
                  ->where('pay_id',$id)
                  ->first();
+       //dd($payment);
        $order = DB::table('oreders')
                ->where('payment_id',$payment->id)
                ->first();

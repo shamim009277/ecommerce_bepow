@@ -124,7 +124,7 @@
                     <tr>
                       @if($detail->total > $detail->subtotal)
                         <th> Disciount</th>
-                        <td>${{($detail->total)-($detail->subtotal+$detail->shipping_cost)}}</td>
+                        <th>${{($detail->total)-($detail->subtotal+$detail->shipping_cost)}}</th>
                       @else
                         <th> Disciount</th>
                         <th>${{($detail->subtotal)-($detail->total+$detail->shipping_cost)}}</th>

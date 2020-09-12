@@ -22,22 +22,21 @@
                     <div class="section-title">
                         <h2>About us</h2>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores nesciunt maxime quod debitis est laboriosam quaerat maiores ipsam, officiis, dicta incidunt vel quos? Saepe esse explicabo numquam in iure asperiores? Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, ratione ipsam, placeat exercitationem in explicabo reprehenderit debitis pariatur sunt, aut sit illum tenetur est repellat temporibus eligendi vitae adipisci dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores impedit sed rerum doloribus! Nemo consequatur explicabo architecto dolor sed, numquam deserunt voluptatem aut voluptates! Esse nihil minima aspernatur modi quas!</p>
+                    <p>{!! $about->content !!}</p>
 
                     <h5 class="mb-2">Mission</h5>
                     
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores nesciunt maxime quod debitis est laboriosam quaerat maiores ipsam, officiis, dicta incidunt vel quos? Saepe esse explicabo numquam in iure asperiores? Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, ratione ipsam, placeat exercitationem in explicabo reprehenderit debitis pariatur sunt, aut sit illum tenetur est repellat temporibus eligendi vitae adipisci dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores impedit sed rerum doloribus! Nemo consequatur explicabo architecto dolor sed, numquam deserunt voluptatem aut voluptates! Esse nihil minima aspernatur modi quas! Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, dolore incidunt ratione quo commodi totam recusandae, non quas adipisci, quae necessitatibus magni rerum soluta delectus voluptatem atque hic eveniet tempora.</p>
+                    <p>{!! $about->mission !!}</p>
 
                     <h5 class="mb-2">Vission</h5>
 
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores nesciunt maxime quod debitis est laboriosam quaerat maiores ipsam, officiis, dicta incidunt vel quos? Saepe esse explicabo numquam in iure asperiores? Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, ratione ipsam, placeat exercitationem in explicabo reprehenderit debitis pariatur sunt, aut sit illum tenetur est repellat temporibus eligendi vitae adipisci dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores impedit sed rerum doloribus! Nemo consequatur explicabo architecto dolor sed, numquam deserunt voluptatem aut voluptates! Esse nihil minima aspernatur modi quas! Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum hic consectetur doloremque quis error, consequatur aliquid, est, doloribus magni quos tempora? Debitis sint asperiores iste rerum dolores necessitatibus, tempore doloremque.</p>
+                    <p>{!! $about->vission !!}</p>
                 </div>
             </div>
         </div>
     </section><!--/About-->
 
-    <!--User Review Section-->
-    <section class="section-padding-2">
+    <section class="section-padding-2 gray-bg">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 centered">
@@ -47,50 +46,28 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
+@if(!empty($testimonials))
+        @foreach($testimonials as $testimonial)
                 <div class="col-xl-4 col-sm-6">
                     <div class="single-user-review">
                         <div class="quote-icon">
-                            <img src="assets/images/quote.png" alt="">
+                            <img src="frontend/images/quote.png" alt="">
                         </div>
                         <div class="review">
-                            <p>Got an amazing bike for my next high ride. Really reasonable price and hight quality performance. Highly Recomended!!</p>
+                            <p>{!!$testimonial->review!!}</p>
                         </div>
                         <div class="reviewer-thumb">
-                            <img src="assets/images/reviewer/1.jpg" alt="">
-                            <p>Astron haat</p>
+                            <img src="{{ asset('frontend/images/reviewer/' . $testimonial->image) }}" alt="">
+                            <p>{{$testimonial->author}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-sm-6">
-                    <div class="single-user-review">
-                        <div class="quote-icon">
-                            <img src="assets/images/quote.png" alt="">
-                        </div>
-                        <div class="review">
-                            <p>Got an amazing bike for my next high ride. Really reasonable price and hight quality performance. Highly Recomended!!</p>
-                        </div>
-                        <div class="reviewer-thumb">
-                            <img src="assets/images/reviewer/2.jpg" alt="">
-                            <p>Astron haat</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6">
-                    <div class="single-user-review">
-                        <div class="quote-icon">
-                            <img src="assets/images/quote.png" alt="">
-                        </div>
-                        <div class="review">
-                            <p>Got an amazing bike for my next high ride. Really reasonable price and hight quality performance. Highly Recomended!!</p>
-                        </div>
-                        <div class="reviewer-thumb">
-                            <img src="assets/images/reviewer/3.jpg" alt="">
-                            <p>Astron haat</p>
-                        </div>
-                    </div>
-                </div>
+        @endforeach
+@else
+@endif   
             </div>
         </div>
     </section><!--/User Review Section-->
+
 @endsection

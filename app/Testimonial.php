@@ -8,6 +8,6 @@ class Testimonial extends Model
 {
     protected $table = "testimonials";
     protected $fillable = [
-        'review','image','status'
-    ]
+        'author','review','image','status'
+    ];
 }

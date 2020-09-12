@@ -1,9 +1,10 @@
-<footer class="footer-area section-padding-2 light-primary-bg">
+<!--Footer Area-->
+    <footer class="footer-area section-padding-2 light-primary-bg">
         <div class="container">
             <div class="row">
                 <div class="col-xl-2">
                     <div class="footer-logo">
-                        <a href=""><img src="assets/images/logo.png" alt=""></a>
+                        <a href=""><img src="{{asset('frontend/images/logo.png')}}" alt=""></a>
                     </div>
                 </div>
                 <div class="col-xl-10">
@@ -28,9 +29,9 @@
                 </div>
                 <div class="col-xl-6 col-sm-6">
                     <div class="copyright-icon">
-                        <img src="assets/images/payment.png" alt="">
+                        <img src="{{asset('frontend/images/payment.png')}}" alt="">
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
+    </footer><!--/Footer Area-->

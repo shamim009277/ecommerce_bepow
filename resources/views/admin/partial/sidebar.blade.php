@@ -155,6 +155,13 @@
               <p class="text">Payment Refund</p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="{{url('admin/manage/contact')}}" class="nav-link {{ (request()->is('admin/manage/contact')) ? 'active' : '' }}">
+              <i class="nav-icon far fa-circle text-danger"></i>
+              <p class="text">Contact</p>
+            </a>
+          </li>
           
         </ul>
       </nav>

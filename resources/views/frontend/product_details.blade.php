@@ -96,7 +96,7 @@
     </section><!--/Product Section-->
 
     <!--User Review Section-->
-    <section class="section-padding-2">
+    <section class="section-padding-2 gray-bg">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 centered">
@@ -106,51 +106,29 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
+    @if(!empty($testimonials))
+        @foreach($testimonials as $testimonial)
                 <div class="col-xl-4 col-sm-6">
                     <div class="single-user-review">
                         <div class="quote-icon">
-                            <img src="assets/images/quote.png" alt="">
+                            <img src="frontend/images/quote.png" alt="">
                         </div>
                         <div class="review">
-                            <p>Got an amazing bike for my next high ride. Really reasonable price and hight quality performance. Highly Recomended!!</p>
+                            <p>{!!$testimonial->review!!}</p>
                         </div>
                         <div class="reviewer-thumb">
-                            <img src="assets/images/reviewer/1.jpg" alt="">
-                            <p>Astron haat</p>
+                            <img src="{{ asset('frontend/images/reviewer/' . $testimonial->image) }}" alt="">
+                            <p>{{$testimonial->author}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-sm-6">
-                    <div class="single-user-review">
-                        <div class="quote-icon">
-                            <img src="assets/images/quote.png" alt="">
-                        </div>
-                        <div class="review">
-                            <p>Got an amazing bike for my next high ride. Really reasonable price and hight quality performance. Highly Recomended!!</p>
-                        </div>
-                        <div class="reviewer-thumb">
-                            <img src="assets/images/reviewer/2.jpg" alt="">
-                            <p>Astron haat</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6">
-                    <div class="single-user-review">
-                        <div class="quote-icon">
-                            <img src="assets/images/quote.png" alt="">
-                        </div>
-                        <div class="review">
-                            <p>Got an amazing bike for my next high ride. Really reasonable price and hight quality performance. Highly Recomended!!</p>
-                        </div>
-                        <div class="reviewer-thumb">
-                            <img src="assets/images/reviewer/3.jpg" alt="">
-                            <p>Astron haat</p>
-                        </div>
-                    </div>
-                </div>
+        @endforeach
+    @else
+    @endif   
             </div>
         </div>
     </section><!--/User Review Section-->
+    <!--/User Review Section-->
 
 @endsection

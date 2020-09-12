@@ -1,99 +1,74 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        
+    <link rel="shortcut icon" href="frontend/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{asset('frontend/images/favicon.ico')}}" type="image/x-icon">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>@yield('title')</title>
+    <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Bootstrap -->
+    <link href="{{asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet">
+        
+    <link href="{{asset('frontend/css/fontawesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/magnific-popup.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/jquery-ui.css')}}" rel="stylesheet">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="{{asset('frontend/css/animate.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/owl.carousel.min.css')}}" rel="stylesheet">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Main css -->
+    <link href="{{asset('frontend/css/main.css')}}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 <body>
-<div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
+    
+    <!-- Preloader -->
+     <div class="preloader">
+        <div class="lds-dual-ring"></div>
+     </div> 
+    <!--/Preloader -->
 
-                </ul>
 
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                @if(\Illuminate\Support\Facades\Auth::guard('admin')->check())
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('admin.logout') }}"
-                                           onclick="event.preventDefault();
-                                                     document.getElementById('admin-logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-
-                                        <form id="admin-logout-form" action="{{ route('admin.logout') }}" method="POST"
-                                              style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                @else
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('user.logout') }}"
-                                           onclick="event.preventDefault();
-                                                     document.getElementById('user-logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-
-                                        <form id="user-logout-form" action="{{ route('user.logout') }}" method="POST"
-                                              style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                @endif
-                            </li>
-                            @endguest
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <main class="py-4">
+    <!--Main Content Area-->
+    <section class="section-padding">
         @yield('content')
-    </main>
-</div>
+    </section><!--/Main Content Area-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{asset('frontend/js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery-migrate.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery-ui.js')}}"></script>
+
+    <script src="{{asset('frontend/js/popper.js')}}"></script>
+    <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
+
+    <script src="{{asset('frontend/js/magnific-popup.min.js')}}"></script>
+    <script src="{{asset('frontend/js/imagesloaded.pkgd.min.js')}}"></script>
+    <script src="{{asset('frontend/js/isotope.pkgd.min.js')}}"></script>
+    
+    <script src="{{asset('frontend/js/waypoints.min.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery.counterup.min.js')}}"></script>
+    <script src="{{asset('frontend/js/wow.min.js')}}"></script>
+    <script src="{{asset('frontend/js/scrollUp.min.js')}}"></script>
+
+    <script src="{{asset('frontend/js/script.js')}}"></script>
+
 </body>
 </html>

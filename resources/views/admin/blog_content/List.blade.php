@@ -50,9 +50,9 @@
                                    </td>
                                    <td>
                                   @if($blog->status==1)
-                                  <a class="btn btn-warning btn-sm" href="" title="Change Status"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+                                  <a class="btn btn-warning btn-sm" href="{{url('admin/blogs/change_unactive/'.$blog->id)}}" title="Change Status"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
                                  @else
-                                  <a class="btn btn-info btn-sm" href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                                  <a class="btn btn-info btn-sm" href="{{url('admin/blogs/change_active/'.$blog->id)}}"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
                                  @endif
                                   <a class="btn btn-success btn-sm" href="{{route('blogs.edit',$blog->id)}}"><i class="fas fa-edit" aria-hidden="true"></i></a>
                                   <form id="delete-form-{{$blog->id}}" action="{{route('blogs.destroy',$blog->id)}}" method="POST" style="display:none">
