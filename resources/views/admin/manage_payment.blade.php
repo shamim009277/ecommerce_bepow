@@ -47,13 +47,24 @@
                                    <td>{{$payment->receipt_email}}</td>
                                    <td>
                               @if($payment->payment_type == 'VISA CARD')
-                                   <a href="{{URL::to('admin/payment/refund/'.$payment->transaction_id)}}" class="btn btn-info btn-sm">Refund</a>
-                                     
-                              @elseif($payment->payment_type == 'PayPal')
-                                    <a href="{{URL::to('admin/payment/paypal_refund/'.$payment->pay_id)}}" class="btn btn-warning btn-sm">Refund</a>  
-                                      
+                                   <a href="{{URL::to('admin/payment/refund/'.$payment->pay_id)}}" class="btn btn-info btn-sm">Refund</a>        
                               @endif
-                                      <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                  <form id="delete-form-{{$payment->id}}" action="{{url('admin/payment/destroy',$payment->id)}}" method="POST" title="Delete" style="display:none">
+                                      @csrf
+                                      @method('GET')
+                                      
+                                    </form>
+
+                                  <button class="btn btn-danger btn-sm"
+                                  onclick="if(confirm('Are You Sure You Want to Delete This')){
+                                      event.preventDefault();
+                                       document.getElementById('delete-form-{{$payment->id}}').submit();
+                                  }else{
+                                         event.preventDefault();
+                                  }
+                                  ">
+                                    Delete
+                                  </button>
                                    </td>
                                 </tr>
                         @endforeach        

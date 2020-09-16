@@ -34,14 +34,10 @@
               </p>
             </a>
           </li>
-          <?php 
-
-               $item = 'admin/pro_item';
-               
-           ?>
-          <li class="nav-item has-treeview ">
+          
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+              <i class="nav-icon fas fa-bars"></i>
               <p>
                 Product Items
                 <i class="fas fa-angle-left right"></i>
@@ -49,13 +45,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{URL::to('/admin/pro_item')}}" class="nav-link">
+                <a href="{{URL::to('/admin/pro_item')}}" class="nav-link {{ (request()->is('/admin/pro_item')) ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Product</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{URL::to('/admin/pro_image')}}" class="nav-link ">
+                <a href="{{URL::to('/admin/pro_image')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Product Images</p>
                 </a>
@@ -71,7 +67,7 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+              <i class="nav-icon fas fa-folder"></i>
               <p>
                 Product Features
                 <i class="fas fa-angle-left right"></i>
@@ -90,40 +86,69 @@
                   <p>Feature Overview</p>
                 </a>
               </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Banner
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
+                <a href="{{URL::to('/admin/main_banners')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>jsGrid</p>
+                  <p>Main Banner</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Common Banner</p>
                 </a>
               </li>
             </ul>
           </li>
+
+
+
+
           <li class="nav-header">Pages</li>
 
           <li class="nav-item">
+            <a href="{{URL::to('/admin/logo')}}" class="nav-link {{ (request()->is('admin/logo')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>Logo</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="{{URL::to('/admin/parts')}}" class="nav-link {{ (request()->is('admin/parts')) ? 'active' : '' }}">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon fas fa-crop"></i>
               <p>Bike Parts</p>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="{{URL::to('/admin/blogs')}}" class="nav-link {{ (request()->is('admin/blogs')) ? 'active' : '' }}">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon fas fa-id-card"></i>
               <p>Blog Content</p>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="{{URL::to('/admin/about')}}" class="nav-link {{ (request()->is('admin/about')) ? 'active' : '' }}">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon fas fa-address-card"></i>
               <p>About</p>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="{{URL::to('/admin/testimonal')}}" class="nav-link {{ (request()->is('admin/testimonal')) ? 'active' : '' }}">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon fas fa-camera"></i>
               <p>Testimonial</p>
             </a>
           </li>

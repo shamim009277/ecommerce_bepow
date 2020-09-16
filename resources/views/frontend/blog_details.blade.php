@@ -38,6 +38,7 @@
                         </div>
                         <div class="single-sidebar">
                             <h3>Social Pages</h3>
+                            
                             <div class="social-follow">
                                 <a href="" class="facebook-bg"><i class="fab fa-facebook-f"></i></a>
                                 <a href="" class="twitter-bg"><i class="fab fa-twitter"></i></a>
@@ -49,7 +50,7 @@
                     </div>
                 </div>
 
-
+                
 
                 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
                     <div class="single-blog-block">
@@ -74,7 +75,7 @@
                             
                         </a>
                     </div>
-                          
+                    <div class="sharethis-inline-share-buttons"></div>
                     <div class="post-share-and-tag row">
                         <div class="col-xl-12 col-lg-12 col-md-12">
                             <div class="social">
@@ -93,3 +94,8 @@
     </section><!--/Blog-->
 
 @endsection
+@push('scripts')
+
+    
+
+@endpush

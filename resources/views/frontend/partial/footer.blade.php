@@ -2,10 +2,16 @@
     <footer class="footer-area section-padding-2 light-primary-bg">
         <div class="container">
             <div class="row">
+                <?php 
+                      $logo =DB::table('logos')->first();
+                 ?>
                 <div class="col-xl-2">
+                  @if(!empty($logo))  
                     <div class="footer-logo">
-                        <a href=""><img src="{{asset('frontend/images/logo.png')}}" alt=""></a>
+                        <a href=""><img src="{{asset('frontend/images/logo/'.$logo->logo)}}" alt=""></a>
                     </div>
+                  @else
+                  @endif 
                 </div>
                 <div class="col-xl-10">
                     <div class="text-right">

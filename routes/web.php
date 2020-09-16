@@ -63,6 +63,8 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>['auth:admin'
 	Route::resource('blogs', 'BlogController');
   Route::resource('about', 'AboutController');
   Route::resource('testimonal', 'TestimonialController');
+  Route::resource('logo', 'LogoController');
+  Route::resource('main_banners', 'MainBannerController');
   Route::get('/manage/contact','ManageController@manageContact');
   Route::get('/manage_orders','ManageController@manageOrders');
   Route::get('/manage_shipping','ManageController@manageShipping');
@@ -71,6 +73,8 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>['auth:admin'
   Route::get('/payment/refund/{id}','ManageController@paymentRefund');
   Route::get('/payment/refund/{id}','ManageController@paymentRefund');
   Route::post('/payment/refund/create','ManageController@paymentRefundCreate');
+  Route::get('/payment/destroy/{id}','ManageController@paymentDestroy');
+  Route::get('/shipping/destroy/{id}','ManageController@shippingDestroy');
 
   Route::get('/payment/paypal_refund/{id}','RefundController@paypalPaymentRefund');
   Route::post('payment/paypal_refund/create','RefundController@paypalPaymentRefundCreate');

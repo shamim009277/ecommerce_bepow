@@ -2,7 +2,7 @@
 @section('title','Bipow - One Product Store')
 @section('content')
  <!--Custom Banner-->
-    <section class="section-padding dark-overlay" style="background: url(frontend/images/banner-2.jpg) no-repeat center center;">
+    <section class="section-padding dark-overlay" style="background: url(../frontend/images/banner-2.jpg) no-repeat center center;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 centered cl-white">

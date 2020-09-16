@@ -15,6 +15,7 @@ use App\Blog;
 use App\About;
 use App\Testimonial;
 use App\Contact;
+use App\MainBanner;
 
 class FrontendController extends Controller
 {
@@ -48,13 +49,13 @@ class FrontendController extends Controller
         $decoded_results = json_decode($all_result, true);
         $posts = $decoded_results['data'];
         
-        
+        $banner = MainBanner::first();
         $testimonials = Testimonial::where('status',1)->get();
         $parts = BikePart::where('status',1)->get();
         $tittles = FeatureOverview::with(['feature'])->where('status',1)->get();
         //$product = ProductItem::where('status',1)
         $product_images = ProductImage::where('status',1)->get();
-        return view('frontend.home',compact('tittles','product_images','parts','posts','testimonials'));
+        return view('frontend.home',compact('tittles','product_images','parts','posts','testimonials','banner'));
     }
 
     public function show_about(){

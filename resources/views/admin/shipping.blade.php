@@ -50,7 +50,22 @@
                                    <td>{{$shipping->message}}</td>
                                    <td>
                               
-                                      <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                    <form id="delete-form-{{$shipping->id}}" action="{{url('admin/shipping/destroy',$shipping->id)}}" method="POST" title="Delete" style="display:none">
+                                    @csrf
+                                    @method('GET')
+                                      
+                                    </form>
+
+                                  <button class="btn btn-danger btn-sm"
+                                  onclick="if(confirm('Are You Sure You Want to Delete This')){
+                                      event.preventDefault();
+                                       document.getElementById('delete-form-{{$shipping->id}}').submit();
+                                  }else{
+                                         event.preventDefault();
+                                  }
+                                  ">
+                                    Delete
+                                  </button>
                                    </td>
                                 </tr>
                         @endforeach        

@@ -4,15 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\BikePart;
+use App\MainBanner;
 use DB;
 use Session;
 use Response;
 use Validator;
 
-class BikePartController extends Controller
+class MainBannerController extends Controller
 {
-    
     public function __construct()
     {
         $this->middleware('auth:admin');
@@ -25,8 +24,8 @@ class BikePartController extends Controller
      */
     public function index()
     {
-        $parts = BikePart::paginate(10);
-        return view('admin.bike_parts.List',compact('parts'));
+        $main_banners = MainBanner::paginate(10);
+        return view('admin.main_banner.List',compact('main_banners'));
     }
 
     /**
@@ -36,7 +35,7 @@ class BikePartController extends Controller
      */
     public function create()
     {
-        return view('admin.bike_parts.add_edit');
+        return view('admin.main_banner.add_edit');
     }
 
     /**
@@ -49,9 +48,9 @@ class BikePartController extends Controller
     {
         $validator = Validator::make($request->all(),[
             
-                'title'=>'required | max:255 | unique:bike_parts',
-                'short_description'=>'required',
-                'image'=>'mimes:jpeg,jpg,png,gif|required|max:2000'
+                'title'  =>'required | max:70',
+                'content'=>'required | max:200',
+                'image'  =>'mimes:jpeg,jpg,png,gif|required|max:2000'
                 
             ]);
         if($validator->fails())
@@ -64,19 +63,17 @@ class BikePartController extends Controller
             Session::flash('flash_message', $plainErrorText);
             return redirect()->back()->withErrors($validator)->withInput()->with('status_color','warning');
         }
-
         $input = $request->all();
         //return $input;
         $input['title'] = $request->title;
-        $input['short_description'] = $request->short_description;
-        $input['status'] = 1;
+        $input['content'] = $request->content;
 
         $image = $request->file('image');
         if ($image) {
             //$img_name = $image->getClientOriginalName();
             $ext = strtolower($image->getClientOriginalExtension());
             $image_full_name = uniqid().".".$ext;
-            $image_path = 'frontend/images/parts/';
+            $image_path = 'frontend/images/banner/';
             $image_url = $image_path.$image_full_name;
             $success=$image->move($image_path,$image_full_name);
             if ($success) {
@@ -88,17 +85,17 @@ class BikePartController extends Controller
 
         try{
             $bug = 0;
-            $insert = BikePart::create($input);
+            $insert = MainBanner::create($input);
         }catch(\Exception $e){
             $bug=$e->errorInfo[1];
         }
 
         if($bug==0){
         Session::flash('flash_message','Data Added Successfully !');
-        return redirect('/admin/parts')->with('status_color','success');
+        return redirect('/admin/main_banners')->with('status_color','success');
         }else{
         Session::flash('flash_message','Something Error Found.');
-        return redirect('/admin/parts')->with('status_color','danger');
+        return redirect('/admin/main_banners')->with('status_color','danger');
         }
     }
 
@@ -121,8 +118,8 @@ class BikePartController extends Controller
      */
     public function edit($id)
     {
-        $single_parts = BikePart::findOrFail($id);
-        return view('admin.bike_parts.add_edit',compact('single_parts'));
+        $single_banner = MainBanner::findOrFail($id);
+        return view('admin.main_banner.add_edit',compact('single_banner'));
     }
 
     /**
@@ -133,13 +130,12 @@ class BikePartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-
-    {   
+    {
         $validator = Validator::make($request->all(),[
             
-                'title'=>'required | max:255 | unique:bike_parts',
-                'short_description'=>'required',
-                'image'=>'mimes:jpeg,jpg,png,gif|max:2000'
+                'title'  =>'required | max:70',
+                'content'=>'required | max:200',
+                'image'  =>'mimes:jpeg,jpg,png,gif|max:2000'
                 
             ]);
         if($validator->fails())
@@ -153,25 +149,24 @@ class BikePartController extends Controller
             return redirect()->back()->withErrors($validator)->withInput()->with('status_color','warning');
         }
 
-        $part = BikePart::findOrFail($id);
+        $banner = MainBanner::findOrFail($id);
         $input = $request->all();
-        //dd($input);
+        //return $input;
         $input['title'] = $request->title;
-        $input['short_description'] = $request->short_description;
-        //$input['status'] = 1;
+        $input['content'] = $request->content;
 
-        if (($request->file('image')) !== ($part->image)) {
+        if (($request->file('image')) !== ($banner->image)) {
 
          $image = $request->file('image');
            if ($image) {
             //$img_name = $image->getClientOriginalName();
             $ext = strtolower($image->getClientOriginalExtension());
             $image_full_name = uniqid().".".$ext;
-            $image_path = 'frontend/images/parts/';
+            $image_path = 'frontend/images/banner/';
             $image_url = $image_path.$image_full_name;
             $success=$image->move($image_path,$image_full_name);
             if ($success) {
-                $old_image = $image_path.$part->image;
+                $old_image = $image_path.$banner->image;
                 if (file_exists($old_image)) {
                     @unlink($old_image);
                 }
@@ -181,13 +176,13 @@ class BikePartController extends Controller
         }
             
         }else{
-            $input['image'] = $part->image;
+            $input['image'] = $banner->image;
         }
 
         try {
             $bug = 0;
             //$data = BikePart::update($input);
-            $part->update($input);
+            $banner->update($input);
             
         } catch (\Exception $e) {
             $bug = $e->errorInfo[1];
@@ -195,11 +190,12 @@ class BikePartController extends Controller
 
         if($bug==0){
         Session::flash('flash_message','Data Added Successfully !');
-        return redirect('/admin/parts')->with('status_color','success');
+        return redirect('/admin/main_banners')->with('status_color','success');
         }else{
         Session::flash('flash_message','Something Error Found.');
-        return redirect('/admin/parts')->with('status_color','danger');
+        return redirect('/admin/main_banners')->with('status_color','danger');
         }
+
     }
 
     /**
@@ -210,16 +206,16 @@ class BikePartController extends Controller
      */
     public function destroy($id)
     {
-        $part = BikePart::findOrFail($id);
-        $image_path = 'frontend/images/parts/';
-        $old_image = $image_path.$part->image;
+        $banner = MainBanner::findOrFail($id);
+        $image_path = 'frontend/images/banner/';
+        $old_image = $image_path.$banner->image;
                 if (file_exists($old_image)) {
                     @unlink($old_image);
                 }
 
         try{
             $bug=0;
-            $part->delete();
+            $banner->delete();
         }
         catch(\Exception $e)
         {

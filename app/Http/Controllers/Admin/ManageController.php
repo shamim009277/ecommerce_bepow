@@ -9,6 +9,8 @@ use App\Oreder;
 use App\Refund;
 use App\User;
 use App\Contact;
+use App\Payment;
+use App\shipping;
 use DB;
 use Session;
 
@@ -131,6 +133,54 @@ class ManageController extends Controller
     public function manageContact(){
       $contacts = Contact::all();
       return view('admin.contact',compact('contacts'));
+    }
+
+    public function paymentDestroy($id){
+      $message = Payment::findOrFail($id);
+
+        try{
+            $bug=0;
+            $delete = $message->delete();
+        }
+        catch(\Exception $e)
+        {
+            $bug=$e->errorInfo[1];
+        }
+
+        if($bug==0){
+
+            Session::flash('flash_message','Data Deleted Successfully Deleted !');
+            return redirect()->back()->with('status_color','danger');
+
+        }else{
+
+            Session::flash('flash_message','Something Error Found !');
+            return redirect()->back()->with('status_color','danger');
+        }
+    }
+
+    public function shippingDestroy($id){
+      $shipping = shipping::findOrFail($id);
+
+        try{
+            $bug=0;
+            $delete = $shipping->delete();
+        }
+        catch(\Exception $e)
+        {
+            $bug=$e->errorInfo[1];
+        }
+
+        if($bug==0){
+
+            Session::flash('flash_message','Data Deleted Successfully Deleted !');
+            return redirect()->back()->with('status_color','danger');
+
+        }else{
+
+            Session::flash('flash_message','Something Error Found !');
+            return redirect()->back()->with('status_color','danger');
+        }
     }
 
 

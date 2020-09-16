@@ -3,19 +3,23 @@
 
 @section('content')
     <!--Banner Area-->
-    <section class="banner-area dark-overlay" style="background: url(frontend/images/banner.jpg) no-repeat center fixed;">
+@if(!empty($banner))
+    <section class="banner-area dark-overlay" style="background: url({{asset('frontend/images/banner/'.$banner->image)}}) no-repeat center fixed;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 centered">
                     <div class="banner-content">
-                        <h2>Bipow your dream bike</h2>
-                        <p>Dolor sit amet consectetur adipisicing elit. Reprehenderit, eos sed a vel Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam amet esse</p>
+                        <h2>{{$banner->title}}</h2>
+                        <p>{!!$banner->content!!}</p>
                         <a href="{{url('/product')}}" class="bttn-mid btn-fill"><i class="fas fa-bicycle"></i>Shop now</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section><!--/Banner Area-->
+    </section>
+@else
+@endif
+    <!--/Banner Area-->
 
     <!--Feature Area-->
 @if(!empty($parts))

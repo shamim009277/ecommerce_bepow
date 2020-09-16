@@ -1,8 +1,14 @@
  <header class="header-area light-primary-bg">
         <nav class="navbar navbar-expand-lg main-menu">
             <div class="container-fluid">
-
-                <a class="navbar-brand" href="index.html"><img src="{{asset('frontend/images/logo.png')}}" class="d-inline-block align-top" alt=""></a>
+                <?php 
+                      $logo = DB::table('logos')->first();
+                 ?>
+            @if(!empty($logo))
+                <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('frontend/images/logo/'.$logo->logo)}}" class="d-inline-block align-top" alt=""></a>
+            @else 
+                <h5>Logo</h5>
+            @endif
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="menu-toggle"></span>

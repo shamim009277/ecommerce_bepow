@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\BikePart;
+use App\Logo;
 use DB;
 use Session;
 use Response;
 use Validator;
 
-class BikePartController extends Controller
+class LogoController extends Controller
 {
     
     public function __construct()
@@ -25,8 +25,8 @@ class BikePartController extends Controller
      */
     public function index()
     {
-        $parts = BikePart::paginate(10);
-        return view('admin.bike_parts.List',compact('parts'));
+        $logos = Logo::paginate(10);
+        return view('admin.logo.List',compact('logos'));
     }
 
     /**
@@ -36,7 +36,7 @@ class BikePartController extends Controller
      */
     public function create()
     {
-        return view('admin.bike_parts.add_edit');
+        return view('admin.logo.add_edit');
     }
 
     /**
@@ -49,9 +49,8 @@ class BikePartController extends Controller
     {
         $validator = Validator::make($request->all(),[
             
-                'title'=>'required | max:255 | unique:bike_parts',
-                'short_description'=>'required',
-                'image'=>'mimes:jpeg,jpg,png,gif|required|max:2000'
+                'title'=>'required | max:255',
+                'logo'=>'mimes:jpeg,jpg,png,gif|required|max:2000'
                 
             ]);
         if($validator->fails())
@@ -68,37 +67,35 @@ class BikePartController extends Controller
         $input = $request->all();
         //return $input;
         $input['title'] = $request->title;
-        $input['short_description'] = $request->short_description;
-        $input['status'] = 1;
-
-        $image = $request->file('image');
-        if ($image) {
+        
+        $logo = $request->file('logo');
+        if ($logo) {
             //$img_name = $image->getClientOriginalName();
-            $ext = strtolower($image->getClientOriginalExtension());
+            $ext = strtolower($logo->getClientOriginalExtension());
             $image_full_name = uniqid().".".$ext;
-            $image_path = 'frontend/images/parts/';
+            $image_path = 'frontend/images/logo/';
             $image_url = $image_path.$image_full_name;
-            $success=$image->move($image_path,$image_full_name);
+            $success=$logo->move($image_path,$image_full_name);
             if ($success) {
-                $input['image'] = $image_full_name;
+                $input['logo'] = $image_full_name;
             }            
         }else{
-            $input['image'] = 'default.png';
+            $input['logo'] = 'default.png';
         }
 
         try{
             $bug = 0;
-            $insert = BikePart::create($input);
+            $insert = Logo::create($input);
         }catch(\Exception $e){
             $bug=$e->errorInfo[1];
         }
 
         if($bug==0){
         Session::flash('flash_message','Data Added Successfully !');
-        return redirect('/admin/parts')->with('status_color','success');
+        return redirect('/admin/logo')->with('status_color','success');
         }else{
         Session::flash('flash_message','Something Error Found.');
-        return redirect('/admin/parts')->with('status_color','danger');
+        return redirect('/admin/logo')->with('status_color','danger');
         }
     }
 
@@ -121,8 +118,8 @@ class BikePartController extends Controller
      */
     public function edit($id)
     {
-        $single_parts = BikePart::findOrFail($id);
-        return view('admin.bike_parts.add_edit',compact('single_parts'));
+        $single_logo = Logo::findOrFail($id);
+        return view('admin.logo.add_edit',compact('single_logo'));
     }
 
     /**
@@ -133,13 +130,11 @@ class BikePartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-
-    {   
+    {
         $validator = Validator::make($request->all(),[
             
-                'title'=>'required | max:255 | unique:bike_parts',
-                'short_description'=>'required',
-                'image'=>'mimes:jpeg,jpg,png,gif|max:2000'
+                'title'=>'required | max:255',
+                'logo'=>'mimes:jpeg,jpg,png,gif|max:2000'
                 
             ]);
         if($validator->fails())
@@ -153,41 +148,39 @@ class BikePartController extends Controller
             return redirect()->back()->withErrors($validator)->withInput()->with('status_color','warning');
         }
 
-        $part = BikePart::findOrFail($id);
+        $old_logo = Logo::findOrFail($id);
         $input = $request->all();
         //dd($input);
         $input['title'] = $request->title;
-        $input['short_description'] = $request->short_description;
-        //$input['status'] = 1;
+       
+        if (($request->file('logo')) !== ($old_logo->logo)) {
 
-        if (($request->file('image')) !== ($part->image)) {
-
-         $image = $request->file('image');
-           if ($image) {
+         $logo = $request->file('logo');
+           if ($logo) {
             //$img_name = $image->getClientOriginalName();
-            $ext = strtolower($image->getClientOriginalExtension());
+            $ext = strtolower($logo->getClientOriginalExtension());
             $image_full_name = uniqid().".".$ext;
-            $image_path = 'frontend/images/parts/';
+            $image_path = 'frontend/images/logo/';
             $image_url = $image_path.$image_full_name;
-            $success=$image->move($image_path,$image_full_name);
+            $success=$logo->move($image_path,$image_full_name);
             if ($success) {
-                $old_image = $image_path.$part->image;
+                $old_image = $image_path.$old_logo->logo;
                 if (file_exists($old_image)) {
                     @unlink($old_image);
                 }
-                $input['image'] = $image_full_name;
+                $input['logo'] = $image_full_name;
                 
             }            
         }
             
         }else{
-            $input['image'] = $part->image;
+            $input['logo'] = $old_logo->logo;
         }
 
         try {
             $bug = 0;
             //$data = BikePart::update($input);
-            $part->update($input);
+            $old_logo->update($input);
             
         } catch (\Exception $e) {
             $bug = $e->errorInfo[1];
@@ -195,10 +188,10 @@ class BikePartController extends Controller
 
         if($bug==0){
         Session::flash('flash_message','Data Added Successfully !');
-        return redirect('/admin/parts')->with('status_color','success');
+        return redirect('/admin/logo')->with('status_color','success');
         }else{
         Session::flash('flash_message','Something Error Found.');
-        return redirect('/admin/parts')->with('status_color','danger');
+        return redirect('/admin/logo')->with('status_color','danger');
         }
     }
 
@@ -210,16 +203,16 @@ class BikePartController extends Controller
      */
     public function destroy($id)
     {
-        $part = BikePart::findOrFail($id);
-        $image_path = 'frontend/images/parts/';
-        $old_image = $image_path.$part->image;
+        $logo = Logo::findOrFail($id);
+        $image_path = 'frontend/images/logo/';
+        $old_image = $image_path.$logo->logo;
                 if (file_exists($old_image)) {
                     @unlink($old_image);
                 }
 
         try{
             $bug=0;
-            $part->delete();
+            $logo->delete();
         }
         catch(\Exception $e)
         {

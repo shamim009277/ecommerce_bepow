@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title','Dashboard | Product Item')
+@section('title','Dashboard | Main Banner')
 @section('content')
 <!-- Main content -->
     <section class="content">
@@ -12,10 +12,10 @@
                 <div class="card-header">
                    <h3 class="card-title">
                       <i class="fa fa-list" aria-hidden="true"> </i>
-                      Byke Parts List
+                      Main Banner
                     </h3>
                     <div class="card-tools pull-right">
-                      <a href="{{route('pro_image.create')}}" class="btn btn-info pull-right"><i class="fa fa-plus"></i> Add Post</a>
+                      <a href="{{route('main_banners.create')}}" class="btn btn-info pull-right"><i class="fa fa-plus"></i> Add Post</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -25,39 +25,26 @@
                               <thead>
                               <tr>
                                 <th>Sl</th>
-                                <th>Product item</th>
+                                <th>Title</th>
                                 <th>Image</th>
-                                <th>Price</th>
-                                <th>status</th>
+                                <th>Banner Content</th>
                                 <th>action</th>
                               </tr>
                               </thead>
                               <tbody>
-                             <?php $i=0; ?>
-                              @foreach($products as $product)
+                              <?php $i=0; ?>
+                              @foreach($main_banners as $banner)
                                  <tr>
                                    <td><?php echo ++$i; ?></td>
-                                   <td>{{$product->product->item_name}}</td>
-                                   <td>${{$product->product->price}}</td>
+                                   <td>{{$banner->title}}</td>
                                    <td>
-                                      <img src="{{ asset('frontend/images/product/' . $product->product_image) }}" style="width:70px">
+                                     <img src="{{ asset('frontend/images/banner/' . $banner->image) }}" style="width:70px">
                                    </td>
+                                   <td>{!! $banner->content !!}</td>
                                    
                                    <td>
-                                  @if($product->status==1)
-                                    <span class="btn btn-success btn-sm">Active</span>
-                                  @else
-                                    <span class="btn btn-warning btn-sm">Unactive</span>
-                                  @endif   
-                                   </td>
-                                   <td>
-                                  @if($product->status==1)
-                                  <a class="btn btn-warning btn-sm" href="" title="Change Status"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
-                                 @else
-                                  <a class="btn btn-info btn-sm" href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
-                                 @endif
-                                  <a class="btn btn-success btn-sm" href="{{route('pro_image.edit',$product->id)}}"><i class="fas fa-edit" aria-hidden="true"></i></a>
-                                  <form id="delete-form-{{$product->id}}" action="{{route('pro_image.destroy',$product->id)}}" method="POST" style="display:none">
+                                  <a class="btn btn-success btn-sm" href="{{route('main_banners.edit',$banner->id)}}"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                  <form id="delete-form-{{$banner->id}}" action="{{route('main_banners.destroy',$banner->id)}}" method="POST" style="display:none">
                                       @csrf
                                       @method('DELETE')
                                       
@@ -66,7 +53,7 @@
                                     <button class="btn btn-danger btn-sm"
                                     onclick="if(confirm('Are You Sure You Want to Delete This')){
                                         event.preventDefault();
-                                         document.getElementById('delete-form-{{$product->id}}').submit();
+                                         document.getElementById('delete-form-{{$banner->id}}').submit();
                                     }else{
                                            event.preventDefault();
                                     }
