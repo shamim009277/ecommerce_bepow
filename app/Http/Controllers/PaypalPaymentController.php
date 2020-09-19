@@ -38,11 +38,13 @@ class PaypalPaymentController extends Controller
     	//dd($data);
     	$apiContext = new \PayPal\Rest\ApiContext(
 		  new \PayPal\Auth\OAuthTokenCredential(
-		    env('PAYPAL_CLIENT_ID'),
-		    env('PAYPAL_SECRET_ID')
+		    //env('PAYPAL_CLIENT_ID'),
+		    //env('PAYPAL_SECRET_ID')
+        'ARnmiKYd3dZhEUbwHFwO-FUyMxKCllqS644Fs7L-N0aECm-PFMHq4V85UYYOqgxqiKDR_zJ6LVFtmiQn',
+        'EA_b6ioS-uP5YlVrNOpK5-ahASOuuiUpLJBTPcGfZaHMooDG51K1nGtSUp6kaz60fUygSYK3wgbAhAMR'
 		  )
 		);
-
+    //dd($apiContext);
 		// Create new payer and method
 		$payer = new Payer();
 		$payer->setPaymentMethod("paypal");
@@ -52,7 +54,7 @@ class PaypalPaymentController extends Controller
 		$redirectUrls->setReturnUrl(route('process.paypal'))
 		  ->setCancelUrl(route('cancel.paypal'));
 	
-
+    //dd($redirectUrls);
 		// Set payment amount
 		$amount = new Amount();
 		$amount->setCurrency("USD")
@@ -118,8 +120,10 @@ class PaypalPaymentController extends Controller
       
       $apiContext = new \PayPal\Rest\ApiContext(
 		  new \PayPal\Auth\OAuthTokenCredential(
-		    env('PAYPAL_CLIENT_ID'),
-		    env('PAYPAL_SECRET_ID')
+        'ARnmiKYd3dZhEUbwHFwO-FUyMxKCllqS644Fs7L-N0aECm-PFMHq4V85UYYOqgxqiKDR_zJ6LVFtmiQn',
+        'EA_b6ioS-uP5YlVrNOpK5-ahASOuuiUpLJBTPcGfZaHMooDG51K1nGtSUp6kaz60fUygSYK3wgbAhAMR'
+		    //env('PAYPAL_CLIENT_ID'),
+		    //env('PAYPAL_SECRET_ID')
 		  )
 		);
 

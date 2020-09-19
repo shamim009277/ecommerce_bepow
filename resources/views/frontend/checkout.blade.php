@@ -178,7 +178,7 @@
                                         </li>
                                         <li>
                                             <input type="radio" id="credit_card" name="payment" value="cash-payment" required>
-                                            <label for="credit_card">Credit or Debit card</label>
+                                            <label for="credit_card">Credit or Debit card(Stripe)</label>
                                             <div class="payment-option-text">
                                                 Credit card payment
                                             </div>

@@ -38,13 +38,9 @@
                         </div>
                         <div class="single-sidebar">
                             <h3>Social Pages</h3>
-                            
+                            <div class="addthis_inline_share_toolbox_evlv"></div>
                             <div class="social-follow">
-                                <a href="" class="facebook-bg"><i class="fab fa-facebook-f"></i></a>
-                                <a href="" class="twitter-bg"><i class="fab fa-twitter"></i></a>
-                                <a href="" class="instagram-bg"><i class="fab fa-instagram"></i></a>
-                                <a href="" class="linkedin-bg"><i class="fab fa-linkedin"></i></a>
-                                <a href="" class="pinterest-bg"><i class="fab fa-pinterest"></i></a>
+                                
                             </div>
                         </div>
                     </div>
@@ -75,15 +71,11 @@
                             
                         </a>
                     </div>
-                    <div class="sharethis-inline-share-buttons"></div>
                     <div class="post-share-and-tag row">
                         <div class="col-xl-12 col-lg-12 col-md-12">
                             <div class="social">
                                 <span>Share:</span>
-                                <a href="" class="cl-facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="" class="cl-twitter"><i class="fab fa-twitter"></i></a>
-                                <a href="" class="cl-youtube"><i class="fab fa-youtube"></i></a>
-                                <a href="" class="cl-pinterest"><i class="fab fa-pinterest-p"></i></a>
+                                <div class="sharethis-inline-share-buttons"></div>
                             </div>
                         </div>
                     </div>
@@ -95,7 +87,5 @@
 
 @endsection
 @push('scripts')
-
-    
-
+   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f5e76cdd1810dd3"></script>
 @endpush

@@ -28,6 +28,7 @@
                                 <th>Order Date</th>
                 								<th>Payment Id</th>
                 								<th>Transaction Id</th>
+                                <th>Create Invoice</th>
                 								<th>Payment Status</th>
                 								<th>Action</th>
                               </tr>
@@ -54,6 +55,9 @@
                                 </td>
                                 <td>{{$order->payment_id}}</td>
                                 <td>{{$order->transaction_id}}</td>
+                                <td>
+                                  <a href="{{url('admin/create/invoice/'.$order->id)}}" class="btn btn-primary btn-sm" target="_blank">Invoice</a>
+                                </td>
                                 <td>{{$order->payment_status}}</td>
                                 <td>
                                   <a href="{{url('admin/order/status_change/'.$order->id)}}" class="btn btn-warning btn-sm" title="Change Status"><i class="fa fa-eye" aria-hidden="true"></i></a>

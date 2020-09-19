@@ -30,7 +30,38 @@
                     <div class="row">
                         <div class="col-md-12">
                           @include('common.message')
-                            
+
+                            <div class="form-group row">
+                              <label for="Banner Title" class="col-sm-3 control-label">Banner Title</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" id="title" name="title" placeholder="Enter Banner Title" value="{{  isset($single_content->title)?$single_content->title:old('title')}}">
+                              </div>
+                            </div>
+
+                            @if(isset($single_content->image))
+                             <div class="form-group row">
+                              <label for="Content Image" class="col-sm-3 control-label">Old Banner Image</label>
+                              <div class="col-sm-9">
+                                <img src="{{ asset('frontend/images/banner/' . $single_content->image) }}" style="width:120px"> 
+                              </div>
+                            </div>
+                             <div class="form-group row">
+                              <label for="Content Image" class="col-sm-3 control-label">New Banner Image</label>
+                              <div class="col-sm-9">
+                                <input type="file" class="" id="image" name="image" onchange="loadFile(event)">
+                                <img id="output" width="20%" style="margin-top:5px;" />
+                              </div>
+                            </div>
+                            @else
+                             <div class="form-group row">
+                              <label for="Content Image" class="col-sm-3 control-label">Banner Image</label>
+                              <div class="col-sm-9">
+                                <input type="file" class="" id="image" name="image" onchange="loadFile(event)">
+                                <img id="output" width="20%" style="margin-top:5px;" />
+                              </div>
+                            </div>
+                            @endif
+
                             <div class="form-group row">
                               <label for="Description" class="col-sm-3 control-label">Content</label>
                               <div class="col-sm-9">
@@ -75,6 +106,16 @@
               </div>      
           </div>  
         </div><!-- /.container-fluid -->
+        <script>
+         var loadFile = function(event) {
+         var reader = new FileReader();
+         reader.onload = function(){
+         var output = document.getElementById('output');
+         output.src = reader.result;
+                                     };
+    reader.readAsDataURL(event.target.files[0]);
+       };
+      </script>
     </section>
 @endsection
 

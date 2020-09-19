@@ -2,19 +2,23 @@
 @section('title','Bipow - One Product Store')
 @section('content')
     <!--Custom Banner-->
-    <section class="section-padding dark-overlay" style="background: url(frontend/images/banner-2.jpg) no-repeat center center;">
+@if(!empty($about))
+    <section class="section-padding dark-overlay" style="background: url({{asset('frontend/images/banner/'.$about->image)}}) no-repeat center center;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 centered cl-white">
                     <div class="banner-title">
-                        <h3>About page</h3>
+                        <h3>{{$about->title}}</h3>
                     </div>
                 </div>
             </div>
         </div>
-    </section><!--Custom Banner-->
+    </section>
+@endif
+    <!--Custom Banner-->
     
     <!--About-->
+@if(!empty($about))
     <section class="section-padding gray-bg">
         <div class="container">
             <div class="row">
@@ -35,6 +39,7 @@
             </div>
         </div>
     </section><!--/About-->
+@endif
 
     <section class="section-padding-2 gray-bg">
         <div class="container">

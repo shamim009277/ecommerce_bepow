@@ -25,6 +25,8 @@
                               <thead>
                               <tr>
                                 <th>Sl</th>
+                                <th>Title</th>
+                                <th>Banner Image</th>
                                 <th>Content</th>
                                 <th>Mission</th>
                                 <th>Vission</th>
@@ -36,6 +38,10 @@
                               @foreach($abouts as $about)
                                  <tr>
                                     <td><?php echo ++$n; ?></td>
+                                    <td>{{$about->title}}</td>
+                                    <td>
+                                     <img src="{{ asset('frontend/images/banner/' . $about->image) }}" style="width:70px">
+                                   </td>
                                     <td>{!! $about->content !!}</td>
                                     <td>{!! $about->mission !!}</td>
                                     <td>{!! $about->vission !!}</td>

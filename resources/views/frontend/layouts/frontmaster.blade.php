@@ -10,7 +10,7 @@
     <link rel="icon" href="{{asset('frontend/images/favicon.ico')}}" type="image/x-icon">
 
     <title>@yield('title')</title>
-    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5f5e83e2a86c6e0012410ffb&product=inline-share-buttons" async="async"></script>
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5f5e83e2a86c6e0012410ffb&product=inline-share-buttons' async='async'></script>
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
     <!-- Bootstrap -->
     <link href="{{asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet">

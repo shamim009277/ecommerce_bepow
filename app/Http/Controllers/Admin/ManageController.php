@@ -183,5 +183,28 @@ class ManageController extends Controller
         }
     }
 
+    public function createInvoice($id){
+         
+         $shippings = DB::table('oreders')
+                   ->join('shippings','oreders.shipping_id','=','shippings.id')
+                   ->select('oreders.*','shippings.*')
+                   ->where('oreders.id',$id)
+                   ->first();
+         $orders = DB::table('oreders')
+                  ->where('id',$id)
+                  ->first();
+         $details = DB::table('order_details')
+                  ->join('oreders','order_details.order_id','=','oreders.id')
+                  ->select('order_details.*','oreders.*')
+                  ->where('order_details.order_id',$id)
+                  ->get();
+
+         $payment_id = $orders->payment_id;
+         $payment = DB::table('payments')
+                   ->where('id',$payment_id)
+                   ->first();
+         return view('admin.invoice',compact('shippings','orders','details','payment'));
+    }
+
 
 }

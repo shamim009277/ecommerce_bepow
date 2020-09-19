@@ -76,8 +76,10 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>['auth:admin'
   Route::get('/payment/destroy/{id}','ManageController@paymentDestroy');
   Route::get('/shipping/destroy/{id}','ManageController@shippingDestroy');
 
-  Route::get('/payment/paypal_refund/{id}','RefundController@paypalPaymentRefund');
-  Route::post('payment/paypal_refund/create','RefundController@paypalPaymentRefundCreate');
+  Route::get('/create/invoice/{id}','ManageController@createInvoice');
+
+  /*Route::get('/payment/paypal_refund/{id}','RefundController@paypalPaymentRefund');
+  Route::post('payment/paypal_refund/create','RefundController@paypalPaymentRefundCreate');*/
 
   Route::get('/manage/refund','ManageController@manageRefund');
   Route::get('order/status_change/{id}','StatusController@showStatusForm');

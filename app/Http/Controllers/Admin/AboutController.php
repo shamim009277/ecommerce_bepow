@@ -48,6 +48,8 @@ class AboutController extends Controller
     {
        $validator = Validator::make($request->all(),[
             
+                'title'=>'required | max:30',
+                'image'=>'mimes:jpeg,jpg,png,gif|required|max:2000',
                 'content'=>'required | max:500',
                 'vission'=>'required | max:500',
                 'mission'=>'required | max:500'
@@ -66,9 +68,25 @@ class AboutController extends Controller
 
         $input = $request->all();
         //return $input;
+        $input['title'] = $request->title;
         $input['content'] = $request->content;
         $input['vission'] = $request->vission;
         $input['mission'] = $request->mission;
+
+        $image = $request->file('image');
+        if ($image) {
+            //$img_name = $image->getClientOriginalName();
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = uniqid().".".$ext;
+            $image_path = 'frontend/images/banner/';
+            $image_url = $image_path.$image_full_name;
+            $success=$image->move($image_path,$image_full_name);
+            if ($success) {
+                $input['image'] = $image_full_name;
+            }            
+        }else{
+            $input['image'] = 'default.png';
+        }
 
         try{
             $bug = 0;
@@ -120,6 +138,8 @@ class AboutController extends Controller
     {
         $validator = Validator::make($request->all(),[
             
+                'title'=>'required | max:30',
+                'image'=>'mimes:jpeg,jpg,png,gif|max:2000',
                 'content'=>'required | max:500',
                 'vission'=>'required | max:500',
                 'mission'=>'required | max:500'
@@ -138,9 +158,34 @@ class AboutController extends Controller
         $content = About::findOrFail($id);
         $input = $request->all();
         //return $input;
+        $input['title'] = $request->title;
         $input['content'] = $request->content;
         $input['vission'] = $request->vission;
         $input['mission'] = $request->mission;
+
+        if (($request->file('image')) !== ($content->image)) {
+
+         $image = $request->file('image');
+           if ($image) {
+            //$img_name = $image->getClientOriginalName();
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = uniqid().".".$ext;
+            $image_path = 'frontend/images/banner/';
+            $image_url = $image_path.$image_full_name;
+            $success=$image->move($image_path,$image_full_name);
+            if ($success) {
+                $old_image = $image_path.$content->image;
+                if (file_exists($old_image)) {
+                    @unlink($old_image);
+                }
+                $input['image'] = $image_full_name;
+                
+            }            
+        }
+            
+        }else{
+            $input['image'] = $content->image;
+        }
 
         try{
             $bug = 0;
