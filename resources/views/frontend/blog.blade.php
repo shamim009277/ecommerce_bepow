@@ -22,8 +22,12 @@
                     
                 @foreach($blogs as $blog) 
                    @if(!empty($blog))
+                   <?php 
+                         $id = Crypt::encrypt($blog->id);
+
+                    ?>
                     <div class="single-blog-block">
-                        <a href="{{url('blogs/details/'.$blog->id)}}">
+                        <a href="{{url('blogs/details/'.$id)}}">
                             <div class="thumb">
                                 <img src="{{ asset('frontend/images/blog/'.$blog->image) }}">
                             </div>

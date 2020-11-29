@@ -28,11 +28,19 @@
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
+                        
                         <div class="single-sidebar">
                             <h3>Important topic</h3>
                             <ul>
                             @foreach($titles as $title)
-                                <li><a href="{{url('blogs/details/'.$title->id)}}">{{$title->title}}</a></li>
+                              <?php 
+                                 $id = Crypt::encrypt($title->id);
+                              ?>
+                                <li>
+                                    <a href="{{url('blogs/details/'.$id)}}">
+                                       {{$title->title}}
+                                    </a>
+                                </li>
                             @endforeach
                             </ul>
                         </div>
@@ -46,11 +54,13 @@
                     </div>
                 </div>
 
-                
+                <?php 
+                   $id = Crypt::encrypt($blog->id);
+                ?>
 
                 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
                     <div class="single-blog-block">
-                        <a href="{{url('blogs/details/'.$blog->id)}}">
+                        <a href="{{url('blogs/details/'.$id)}}">
                             <div class="thumb">
                                 <img src="{{ asset('frontend/images/blog/'.$blog->image) }}">
                             </div>

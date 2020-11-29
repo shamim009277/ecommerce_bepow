@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use App\FeatureOverview;
 use Response;
 use Validator;
@@ -43,7 +44,7 @@ class FrontendController extends Controller
            return $result;
         }   
 
-        $url = "https://v1.nocodeapi.com/towhid009/instagram/MENhHevwrPiMSPsp";
+        $url = "https://v1.nocodeapi.com/towhid009/instagram/mQQbrHIjWDBaiGDO";
 
         $all_result = processURL($url);
         $decoded_results = json_decode($all_result, true);
@@ -75,6 +76,7 @@ class FrontendController extends Controller
     }
 
     public function blog_details($id){
+        $id = Crypt::decrypt($id);
         $blog = Blog::where('id',$id)->first();
         $titles = Blog::where('title','!=',$blog->title)->get(); 
        return view('frontend.blog_details',compact('blog','titles'));

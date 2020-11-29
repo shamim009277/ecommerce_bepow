@@ -61,6 +61,9 @@
                                     </thead>
                                     <tbody>
                                     @foreach($orders as $order)
+                                      <?php 
+                                          $id = Crypt::encrypt($order->id);
+                                      ?>
                                       <tr>
                                         <td>#{{$order->id}}</td>
                                         <td>{{$order->item_name}}</td>
@@ -81,7 +84,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{url('/order/user_order_details/'.$order->id)}}" class="btn btn-info btn-md" >Details</a>
+                                            <a href="{{url('/order/user_order_details/'.$id)}}" class="btn btn-info btn-md" >Details</a>
                                         </td>
                                       </tr>
                                     @endforeach

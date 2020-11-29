@@ -39,6 +39,7 @@ class CheckController extends Controller
     }
 
     public function userOrderDetails($id){
+       $id = \Crypt::decrypt($id);
        $user_id = Auth::user('web')->id;
        $detail = DB::table('order_details')
                 ->join('oreders','order_details.order_id','=','oreders.id')
@@ -55,7 +56,7 @@ class CheckController extends Controller
     public function proced_checkout(Request $request){
            
            //return $request->all();
-           /* $validator = Validator::make($request->all(),[
+            $validator = Validator::make($request->all(),[
             
                 'first_name'  =>'required | max:20',    
                 'last_name'   =>'required |max:20',
@@ -67,9 +68,9 @@ class CheckController extends Controller
                 'phone'=>'required',
                 'state'=>'required',
                 'payment'=>'required',       
-            ]);*/
+            ]);
 
-            /*if($validator->fails())
+            if($validator->fails())
             {
                 $plainErrorText = "";
                 $errorMessage = json_decode($validator->messages(), True);
@@ -78,7 +79,7 @@ class CheckController extends Controller
                 }
                 Session::flash('flash_message', $plainErrorText);
                 return redirect()->back()->withErrors($validator)->withInput()->with('status_color','warning');
-            }*/
+            }
 
             $data = array();
 
